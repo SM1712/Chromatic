@@ -1,0 +1,16 @@
+{
+  "name": "Chromatic Visualizador de Fotos",
+  "short_name": "Chromatic",
+  "description": "Visualizador de imágenes de escritorio PWA minimalista con organización por fechas.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1a73e8",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231a73e8'><rect width='18' height='18' x='3' y='3' rx='3' fill='%231a73e8'/><circle cx='8.5' cy='8.5' r='1.5' fill='%23ffffff'/><path d='M21 15l-5-5L5 21' stroke='%23ffffff' stroke-width='2'/></svg>",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}

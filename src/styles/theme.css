@@ -1,0 +1,165 @@
+:root {
+  /* Google-Style Light Theme (Default) */
+  --bg-main: #f8fafd;
+  --bg-surface: #ffffff;
+  --bg-surface-hover: #f1f5f9;
+  --bg-surface-active: #e2e8f0;
+  --bg-pill: #f0f4f9;
+  --bg-pill-hover: #e3e9f1;
+  --bg-glass: rgba(255, 255, 255, 0.85);
+
+  --text-primary: #1f1f1f;
+  --text-secondary: #5f6368;
+  --text-tertiary: #80868b;
+  --text-inverse: #ffffff;
+
+  --border-subtle: #e0e4ec;
+  --border-strong: #cbd5e1;
+
+  --shadow-sm: 0 1px 2px rgba(60, 64, 67, 0.08), 0 1px 3px 1px rgba(60, 64, 67, 0.05);
+  --shadow-md: 0 4px 12px rgba(60, 64, 67, 0.1), 0 1px 3px rgba(60, 64, 67, 0.08);
+  --shadow-lg: 0 12px 32px rgba(60, 64, 67, 0.14), 0 2px 6px rgba(60, 64, 67, 0.08);
+  --shadow-floating: 0 16px 40px rgba(0, 0, 0, 0.12);
+
+  /* Accents - Google Blue Default */
+  --accent-primary: #1a73e8;
+  --accent-hover: #1557b0;
+  --accent-surface: #e8f0fe;
+  --accent-text: #1a73e8;
+  --accent-ring: rgba(26, 115, 232, 0.25);
+
+  /* Radii - Google Material You style */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 9999px;
+
+  /* Transitions */
+  --ease-spring: cubic-bezier(0.2, 0.9, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 0.15s var(--ease-smooth);
+  --transition-normal: 0.25s var(--ease-smooth);
+}
+
+/* Theme: Dark Minimalist */
+[data-theme="dark"] {
+  --bg-main: #121316;
+  --bg-surface: #1e1f23;
+  --bg-surface-hover: #292b30;
+  --bg-surface-active: #32353c;
+  --bg-pill: #282a2f;
+  --bg-pill-hover: #33363d;
+  --bg-glass: rgba(30, 31, 35, 0.85);
+
+  --text-primary: #f1f3f4;
+  --text-secondary: #bdc1c6;
+  --text-tertiary: #9aa0a6;
+
+  --border-subtle: #2e3138;
+  --border-strong: #40444d;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --shadow-floating: 0 16px 48px rgba(0, 0, 0, 0.7);
+
+  --accent-surface: rgba(26, 115, 232, 0.18);
+}
+
+/* Theme: OLED Pitch Black */
+[data-theme="oled"] {
+  --bg-main: #000000;
+  --bg-surface: #0a0a0c;
+  --bg-surface-hover: #16171a;
+  --bg-surface-active: #222429;
+  --bg-pill: #141518;
+  --bg-pill-hover: #202227;
+  --bg-glass: rgba(10, 10, 12, 0.9);
+
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+  --text-tertiary: #71717a;
+
+  --border-subtle: #18181b;
+  --border-strong: #27272a;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.8);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.9);
+  --shadow-lg: 0 12px 36px rgba(0, 0, 0, 0.95);
+  --shadow-floating: 0 16px 48px rgba(0, 0, 0, 1);
+
+  --accent-surface: rgba(26, 115, 232, 0.22);
+}
+
+/* Theme: Cyberpunk Crisp */
+[data-theme="cyberpunk"] {
+  --bg-main: #0f172a;
+  --bg-surface: #1e293b;
+  --bg-surface-hover: #334155;
+  --bg-surface-active: #475569;
+  --bg-pill: #1e293b;
+  --bg-pill-hover: #334155;
+  --bg-glass: rgba(30, 41, 59, 0.88);
+
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-tertiary: #64748b;
+
+  --border-subtle: #334155;
+  --border-strong: #475569;
+
+  --accent-primary: #06b6d4;
+  --accent-hover: #0891b2;
+  --accent-surface: rgba(6, 182, 212, 0.15);
+  --accent-text: #38bdf8;
+}
+
+/* Accent Variations */
+[data-accent="violet"] {
+  --accent-primary: #7c4dff;
+  --accent-hover: #651fff;
+  --accent-surface: #f3e8ff;
+  --accent-text: #7c4dff;
+  --accent-ring: rgba(124, 77, 255, 0.25);
+}
+[data-theme="dark"][data-accent="violet"],
+[data-theme="oled"][data-accent="violet"] {
+  --accent-surface: rgba(124, 77, 255, 0.2);
+}
+
+[data-accent="emerald"] {
+  --accent-primary: #00a86b;
+  --accent-hover: #008f5a;
+  --accent-surface: #e6f7f0;
+  --accent-text: #008f5a;
+  --accent-ring: rgba(0, 168, 107, 0.25);
+}
+[data-theme="dark"][data-accent="emerald"],
+[data-theme="oled"][data-accent="emerald"] {
+  --accent-surface: rgba(0, 168, 107, 0.2);
+}
+
+[data-accent="amber"] {
+  --accent-primary: #e65100;
+  --accent-hover: #bf360c;
+  --accent-surface: #fff3e0;
+  --accent-text: #e65100;
+  --accent-ring: rgba(230, 81, 0, 0.25);
+}
+[data-theme="dark"][data-accent="amber"],
+[data-theme="oled"][data-accent="amber"] {
+  --accent-surface: rgba(230, 81, 0, 0.2);
+}
+
+[data-accent="rose"] {
+  --accent-primary: #e91e63;
+  --accent-hover: #c2185b;
+  --accent-surface: #fce4ec;
+  --accent-text: #e91e63;
+  --accent-ring: rgba(233, 30, 99, 0.25);
+}
+[data-theme="dark"][data-accent="rose"],
+[data-theme="oled"][data-accent="rose"] {
+  --accent-surface: rgba(233, 30, 99, 0.2);
+}

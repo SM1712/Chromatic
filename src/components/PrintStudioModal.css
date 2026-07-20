@@ -1,0 +1,656 @@
+/* ==========================================================================
+   CHROMATIC PRINT STUDIO - ADAPTIVE THEME CSS
+   ========================================================================== */
+
+/* Fullscreen Backdrop - Adapts to app theme */
+.print-studio-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;
+  color: var(--text-primary);
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  animation: printStudioFadeIn 0.25s var(--ease-spring);
+}
+
+@keyframes printStudioFadeIn {
+  from { opacity: 0; transform: scale(0.985); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Header Bar */
+.print-studio-header {
+  height: 64px;
+  padding: 0 24px;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.print-studio-title-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.print-studio-title-group h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  letter-spacing: -0.2px;
+}
+
+.print-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--accent-surface);
+  color: var(--accent-text);
+  border: 1px solid var(--accent-ring);
+}
+
+/* Header Controls & Actions */
+.print-studio-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.print-btn-secondary,
+.print-btn-primary,
+.print-btn-danger,
+.print-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border: 1px solid transparent;
+  outline: none;
+}
+
+.print-btn-secondary {
+  background: var(--bg-pill);
+  color: var(--text-primary);
+  border-color: var(--border-subtle);
+}
+.print-btn-secondary:hover {
+  background: var(--bg-pill-hover);
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
+}
+
+.print-btn-primary {
+  background: var(--accent-primary);
+  color: var(--text-inverse);
+  box-shadow: 0 2px 8px rgba(26, 115, 232, 0.25);
+}
+.print-btn-primary:hover {
+  background: var(--accent-hover);
+  box-shadow: 0 4px 14px rgba(26, 115, 232, 0.35);
+  transform: translateY(-1px);
+}
+
+.print-btn-danger {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.2);
+}
+.print-btn-danger:hover {
+  background: rgba(239, 68, 68, 0.2);
+}
+
+.print-icon-btn {
+  padding: 8px;
+  width: 38px;
+  height: 38px;
+  background: transparent;
+  color: var(--text-secondary);
+  border-radius: 50%;
+}
+.print-icon-btn:hover {
+  background: var(--bg-surface-hover);
+  color: var(--text-primary);
+}
+
+/* Main Body Layout */
+.print-studio-body {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Left Controls Sidebar Panel */
+.print-studio-sidebar {
+  width: 360px;
+  flex-shrink: 0;
+  background: var(--bg-surface);
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.print-sidebar-scroll {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.print-sidebar-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.print-sidebar-scroll::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 3px;
+}
+
+/* Card Sections in Sidebar */
+.print-card-section {
+  background: var(--bg-main);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  transition: border-color var(--transition-fast);
+}
+.print-card-section:hover {
+  border-color: var(--border-strong);
+}
+
+.print-section-header {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--accent-text);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Control Fields */
+.print-field {
+  margin-bottom: 14px;
+}
+.print-field:last-child {
+  margin-bottom: 0;
+}
+
+.print-field label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.print-field .hint {
+  font-size: 0.72rem;
+  color: var(--text-tertiary);
+  margin-top: 4px;
+  line-height: 1.35;
+}
+
+/* Inputs & Selects */
+.print-input,
+.print-select {
+  width: 100%;
+  height: 38px;
+  padding: 0 12px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  outline: none;
+  transition: all var(--transition-fast);
+  font-weight: 500;
+}
+.print-input:focus,
+.print-select:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px var(--accent-ring);
+}
+
+.print-row-2 {
+  display: flex;
+  gap: 10px;
+}
+.print-row-2 > div { flex: 1; }
+
+/* Presets Grid */
+.preset-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.preset-card {
+  padding: 10px;
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-align: center;
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.preset-card:hover {
+  background: var(--bg-surface-hover);
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
+}
+.preset-card.active {
+  background: var(--accent-surface);
+  border-color: var(--accent-primary);
+  color: var(--accent-text);
+}
+
+.preset-card-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.preset-card-desc {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+}
+.preset-card.active .preset-card-desc {
+  color: var(--accent-text);
+  opacity: 0.85;
+}
+
+/* Modern iOS / Material Style Switch Toggle */
+.print-switch-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  cursor: pointer;
+  user-select: none;
+}
+.print-switch-row label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  cursor: pointer;
+  margin: 0;
+}
+
+.switch-track {
+  width: 40px;
+  height: 22px;
+  background: var(--border-strong);
+  border-radius: 12px;
+  position: relative;
+  transition: background-color var(--transition-fast);
+}
+.switch-track.active {
+  background: var(--accent-primary);
+}
+
+.switch-thumb {
+  width: 18px;
+  height: 18px;
+  background: #ffffff;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: transform var(--transition-fast);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.switch-track.active .switch-thumb {
+  transform: translateX(18px);
+}
+
+/* Image Manager Section */
+.image-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 250px;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.image-list-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  background: var(--bg-surface);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  transition: border-color var(--transition-fast);
+}
+.image-list-item:hover {
+  border-color: var(--border-strong);
+}
+
+.image-list-thumb {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-xs);
+  object-fit: cover;
+  background: var(--bg-main);
+  flex-shrink: 0;
+  border: 1px solid var(--border-subtle);
+}
+
+.image-list-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.image-list-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--text-primary);
+}
+
+.image-list-meta {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.image-list-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.mini-icon-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: var(--bg-pill);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+.mini-icon-btn:hover {
+  background: var(--bg-pill-hover);
+  border-color: var(--border-strong);
+}
+
+/* Main Preview Stage Area */
+.print-stage-area {
+  flex: 1;
+  background: var(--bg-main);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 24px;
+  overflow: auto;
+  position: relative;
+  background-image: radial-gradient(var(--border-subtle) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Stage Floating Toolbar */
+.stage-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  margin-bottom: 24px;
+  padding: 6px 16px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.stage-page-counter {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  min-width: 110px;
+  text-align: center;
+}
+
+.stage-zoom-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-left: 1px solid var(--border-subtle);
+  padding-left: 14px;
+}
+
+/* Real Sheet Container */
+.print-sheet-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+  transform-origin: top center;
+  transition: transform 0.2s var(--ease-spring);
+}
+
+.print-sheet {
+  background: #ffffff !important;
+  color: #111827 !important;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.08), var(--shadow-floating);
+  position: relative;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  user-select: none;
+  transition: box-shadow 0.2s ease;
+  border-radius: 2px;
+}
+
+.print-sheet-grid {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Cell Box & Framing */
+.print-cell {
+  position: absolute;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+
+.print-cell-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: repeating-linear-gradient(45deg, #f8fafc, #f8fafc 10px, #f1f5f9 10px, #f1f5f9 20px);
+  border: 1.5px dashed #cbd5e1;
+  border-radius: 4px;
+  color: #94a3b8;
+}
+
+.print-cell-frame {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  position: relative;
+  background: #ffffff;
+}
+
+.print-cell-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.15s ease;
+}
+
+.print-cell-img.fit-cover {
+  object-fit: cover;
+}
+
+.print-cell-img.fit-contain {
+  object-fit: contain;
+}
+
+/* Cell Label / Caption */
+.print-cell-label {
+  font-size: 10px;
+  color: #475569;
+  margin-top: 4px;
+  text-align: center;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: monospace;
+}
+
+/* Crop Marks (Corner Guidelines) */
+.crop-mark {
+  position: absolute;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.crop-mark-tl { top: -8px; left: -8px; width: 16px; height: 16px; border-top: 1.5px solid #000; border-left: 1.5px solid #000; }
+.crop-mark-tr { top: -8px; right: -8px; width: 16px; height: 16px; border-top: 1.5px solid #000; border-right: 1.5px solid #000; }
+.crop-mark-bl { bottom: -8px; left: -8px; width: 16px; height: 16px; border-bottom: 1.5px solid #000; border-left: 1.5px solid #000; }
+.crop-mark-br { bottom: -8px; right: -8px; width: 16px; height: 16px; border-bottom: 1.5px solid #000; border-right: 1.5px solid #000; }
+
+/* Drag & Drop File Zone Overlay */
+.print-drop-overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--accent-surface);
+  backdrop-filter: blur(8px);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-primary);
+  gap: 12px;
+  animation: printStudioFadeIn 0.15s ease;
+  border: 3px dashed var(--accent-primary);
+}
+
+.print-drop-overlay h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* ==========================================================================
+   CSS PRINT MEDIA STYLES (@media print)
+   ========================================================================== */
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+
+  .print-studio-backdrop {
+    position: fixed !important;
+    inset: 0 !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+  }
+
+  .print-studio-header,
+  .print-studio-sidebar,
+  .stage-toolbar,
+  .print-icon-btn,
+  .print-btn-secondary,
+  .print-btn-primary {
+    display: none !important;
+  }
+
+  .print-studio-body {
+    display: block !important;
+    overflow: visible !important;
+  }
+
+  .print-stage-area {
+    display: block !important;
+    background: #ffffff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+  }
+
+  .print-sheet-wrapper {
+    transform: none !important;
+    gap: 0 !important;
+    display: block !important;
+  }
+
+  .print-sheet {
+    visibility: visible !important;
+    box-shadow: none !important;
+    margin: 0 auto !important;
+    page-break-after: always !important;
+    break-after: page !important;
+  }
+
+  .print-sheet:last-child {
+    page-break-after: auto !important;
+    break-after: auto !important;
+  }
+
+  .print-cell-placeholder {
+    background: none !important;
+    border: none !important;
+    display: none !important;
+  }
+
+  .crop-mark {
+    visibility: visible !important;
+  }
+}

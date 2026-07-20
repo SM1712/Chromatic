@@ -1,0 +1,109 @@
+/* ==========================================================================
+   FLOATING SELECTION BAR - CSS STYLES
+   ========================================================================== */
+
+.selection-bar-wrapper {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 20px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18), 0 2px 6px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  animation: slideUpBar 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  color: var(--text-primary);
+  max-width: 90vw;
+  flex-wrap: wrap;
+}
+
+@keyframes slideUpBar {
+  from { opacity: 0; transform: translate(-50%, 20px) scale(0.95); }
+  to { opacity: 1; transform: translate(-50%, 0) scale(1); }
+}
+
+.selection-info-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-right: 12px;
+  border-right: 1px solid var(--border-subtle);
+}
+
+.selection-badge {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.selection-badge .count-pill {
+  padding: 3px 9px;
+  border-radius: var(--radius-pill);
+  background: var(--accent-surface);
+  color: var(--accent-text);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.selection-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.selection-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.82rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  background: var(--bg-pill);
+  color: var(--text-primary);
+}
+.selection-action-btn:hover {
+  background: var(--bg-pill-hover);
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
+}
+
+.selection-action-btn.btn-print-active {
+  background: var(--accent-primary);
+  color: var(--text-inverse);
+  box-shadow: 0 4px 14px var(--accent-ring);
+}
+.selection-action-btn.btn-print-active:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.selection-close-btn {
+  padding: 6px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+.selection-close-btn:hover {
+  background: var(--bg-surface-hover);
+  color: var(--text-primary);
+}

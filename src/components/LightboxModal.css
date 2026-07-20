@@ -1,0 +1,345 @@
+.lightbox-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background-color: var(--bg-main);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;
+  color: var(--text-primary);
+}
+
+/* Header */
+.lightbox-header {
+  height: 64px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-subtle);
+  background-color: var(--bg-surface);
+  box-shadow: var(--shadow-sm);
+  color: var(--text-primary);
+  z-index: 10;
+}
+
+.header-info-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 50%;
+}
+
+.lightbox-filename-interactive {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.lightbox-filename-interactive:hover {
+  background-color: var(--bg-pill-hover);
+  color: var(--accent-primary);
+}
+
+.inline-rename-input {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  background-color: var(--bg-pill);
+  border: 1px solid var(--accent-primary);
+  border-radius: var(--radius-xs);
+  padding: 0.2rem 0.5rem;
+  outline: none;
+  max-width: 260px;
+}
+
+.lightbox-counter {
+  font-size: 0.8rem;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  background-color: var(--bg-pill);
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.lightbox-tools {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lightbox-edit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 16px;
+  background-color: var(--accent-primary);
+  color: var(--text-inverse, #ffffff);
+  border: none;
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.lightbox-edit-btn:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.btn-dark {
+  color: var(--text-secondary);
+}
+.btn-dark:hover {
+  background-color: var(--bg-surface-hover);
+  color: var(--text-primary);
+}
+.btn-dark.active {
+  background-color: var(--accent-surface);
+  color: var(--accent-primary);
+}
+
+.zoom-percentage {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  min-width: 44px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.divider-v-dark {
+  width: 1px;
+  height: 20px;
+  background-color: var(--border-subtle);
+  margin: 0 4px;
+}
+
+/* Body & Stage */
+.lightbox-body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--bg-main);
+}
+
+.image-stage {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow: hidden;
+}
+
+.lightbox-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  box-shadow: var(--shadow-floating);
+  border-radius: var(--radius-xs);
+  user-select: none;
+}
+
+/* Navigation Arrows */
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 5;
+  transition: all var(--transition-fast);
+}
+
+.nav-arrow:hover:not(:disabled) {
+  background-color: var(--bg-surface-hover);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.nav-arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.nav-arrow.left {
+  left: 24px;
+}
+
+.nav-arrow.right {
+  right: 24px;
+}
+
+/* Details Panel */
+.lightbox-details-panel {
+  width: 320px;
+  height: 100%;
+  background-color: var(--bg-surface);
+  border-left: 1px solid var(--border-subtle);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 10;
+  box-shadow: var(--shadow-lg);
+  color: var(--text-primary);
+}
+
+.details-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.details-header h3 {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.details-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.detail-icon {
+  color: var(--accent-primary);
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.detail-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+}
+
+.detail-label {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.detail-value {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.text-break {
+  word-break: break-all;
+}
+
+/* Bottom Thumbnail Strip Carousel */
+.lightbox-thumbnail-strip {
+  height: 72px;
+  background-color: var(--bg-surface);
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  z-index: 10;
+  box-shadow: var(--shadow-md);
+}
+
+.thumbnail-track {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 8px 12px;
+  max-width: 100%;
+  scrollbar-width: none;
+}
+
+.thumbnail-track::-webkit-scrollbar {
+  display: none;
+}
+
+.thumb-btn {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-xs);
+  overflow: hidden;
+  border: 2px solid transparent;
+  background-color: var(--bg-pill);
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 0;
+  transition: all var(--transition-fast);
+}
+
+.thumb-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity var(--transition-fast), filter var(--transition-fast);
+}
+
+/* Same Date vs Different Date Shading (WhatsApp style) */
+.thumb-btn.same-date img {
+  opacity: 1;
+  filter: none;
+}
+
+.thumb-btn.different-date img {
+  opacity: 0.35;
+  filter: grayscale(45%);
+}
+
+.thumb-btn:hover img {
+  opacity: 1;
+  filter: none;
+}
+
+/* Selected Active Thumbnail */
+.thumb-btn.selected {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px var(--accent-ring), var(--shadow-sm);
+  transform: scale(1.08);
+}
+
+.thumb-btn.selected img {
+  opacity: 1;
+  filter: none;
+}

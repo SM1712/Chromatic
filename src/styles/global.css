@@ -1,0 +1,181 @@
+@import './theme.css';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  user-select: none;
+}
+
+/* Custom Desktop Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: var(--radius-pill);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
+
+/* Desktop App Container */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--bg-main);
+  transition: background-color 0.4s var(--ease-spring), border-color 0.4s var(--ease-smooth);
+}
+
+/* Balanced Ocean Mist / Sea Slate Selection Atmosphere */
+.app-container[data-selection-mode="true"] {
+  --bg-main: #ebf5ff;
+  --bg-surface: #ffffff;
+  --bg-surface-hover: #e0f2fe;
+  --bg-pill: #e0f0fe;
+  --bg-glass: rgba(235, 245, 255, 0.92);
+  --border-subtle: #c7e2fe;
+  --border-strong: #90c7fe;
+  --text-primary: #0f172a;
+  --text-secondary: #0369a1;
+  --text-tertiary: #0284c7;
+  --accent-primary: #0284c7;
+  --accent-hover: #0369a1;
+  --accent-surface: #e0f2fe;
+  --accent-ring: rgba(2, 132, 199, 0.25);
+}
+
+[data-theme="dark"].app-container[data-selection-mode="true"],
+[data-theme="dark"] .app-container[data-selection-mode="true"] {
+  --bg-main: #0b1929;
+  --bg-surface: #112236;
+  --bg-surface-hover: #1b324d;
+  --bg-pill: #162a42;
+  --bg-glass: rgba(11, 25, 41, 0.92);
+  --border-subtle: #1c3d61;
+  --text-primary: #f0f9ff;
+  --text-secondary: #7dd3fc;
+  --accent-primary: #38bdf8;
+}
+
+[data-theme="oled"].app-container[data-selection-mode="true"] {
+  --bg-main: #030e1a;
+  --bg-surface: #0a1828;
+  --bg-glass: rgba(3, 14, 26, 0.94);
+  --border-subtle: #122c47;
+}
+
+[data-theme="cyberpunk"].app-container[data-selection-mode="true"] {
+  --bg-main: #06172a;
+  --bg-surface: #0e243e;
+  --bg-glass: rgba(6, 23, 42, 0.92);
+  --border-subtle: #173f6c;
+}
+
+.app-main-layout {
+  display: flex;
+  flex: 1;
+  height: calc(100vh - 64px);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Google Style Pill Button */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  cursor: pointer;
+  outline: none;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background-color: var(--accent-primary);
+  color: var(--text-inverse);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+  transform: translateY(-1px);
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background-color: var(--bg-pill);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+}
+.btn-secondary:hover {
+  background-color: var(--bg-pill-hover);
+  border-color: var(--border-strong);
+}
+
+.btn-icon {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-secondary);
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+.btn-icon:hover {
+  background-color: var(--bg-surface-hover);
+  color: var(--text-primary);
+}
+.btn-icon.active {
+  background-color: var(--accent-surface);
+  color: var(--accent-primary);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleUp {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.25s var(--ease-spring) forwards;
+}
+
+.animate-scale-up {
+  animation: scaleUp 0.2s var(--ease-spring) forwards;
+}
