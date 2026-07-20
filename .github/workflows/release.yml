@@ -36,6 +36,7 @@ jobs:
         uses: tauri-apps/tauri-action@v0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAURI_SKIP_VERSION_CHECK: "true"
         with:
           tagName: v1.0.0
           releaseName: 'Chromatic v1.0.0 - Lanzamiento Oficial'
