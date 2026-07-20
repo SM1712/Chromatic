@@ -1,11 +1,10 @@
 import { FolderSource, ImageItem } from '../types';
-import { getDemoPhotos, DEMO_SOURCE_ID } from './demoPhotos';
 
 export interface SystemFolderOption {
   id: string;
   name: string;
   description: string;
-  iconType: 'pictures' | 'downloads' | 'documents' | 'desktop' | 'demo';
+  iconType: 'pictures' | 'downloads' | 'documents' | 'desktop';
   systemPathKey?: string;
   isDefaultSelected: boolean;
 }
@@ -42,13 +41,6 @@ export const DEFAULT_SYSTEM_FOLDER_OPTIONS: SystemFolderOption[] = [
     iconType: 'desktop',
     systemPathKey: 'desktop',
     isDefaultSelected: false
-  },
-  {
-    id: DEMO_SOURCE_ID,
-    name: 'Fotos de Muestra (Demo)',
-    description: 'Colección de fotografías en alta calidad',
-    iconType: 'demo',
-    isDefaultSelected: true
   }
 ];
 
@@ -58,10 +50,6 @@ export function getPhotosForSystemOption(optionId: string): ImageItem[] {
   const yesterday = new Date(now.getTime() - 24 * 60 * 60 * 1000);
   const threeDaysAgo = new Date(now.getTime() - 3 * 24 * 60 * 60 * 1000);
   const oneWeekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-
-  if (optionId === DEMO_SOURCE_ID) {
-    return getDemoPhotos();
-  }
 
   if (optionId === 'default-pictures') {
     return [

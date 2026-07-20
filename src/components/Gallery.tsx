@@ -12,7 +12,6 @@ interface GalleryProps {
   onToggleSelectImage: (image: ImageItem, e: React.MouseEvent) => void;
   onToggleSelectGroup: (images: ImageItem[]) => void;
   onOpenAddFolder: () => void;
-  onLoadDemo: () => void;
   totalCount: number;
   filteredCount: number;
   searchQuery: string;
@@ -26,7 +25,6 @@ export const Gallery: React.FC<GalleryProps> = ({
   onToggleSelectImage,
   onToggleSelectGroup,
   onOpenAddFolder,
-  onLoadDemo,
   totalCount,
   filteredCount,
   searchQuery
@@ -43,10 +41,6 @@ export const Gallery: React.FC<GalleryProps> = ({
           <button className="btn btn-primary btn-lg" onClick={onOpenAddFolder}>
             <FolderPlus size={20} />
             Agregar Carpetas Fuentes
-          </button>
-          <button className="btn btn-secondary btn-lg" onClick={onLoadDemo}>
-            <Sparkles size={18} className="sparkle" />
-            Ver Galería de Demostración
           </button>
         </div>
       </div>

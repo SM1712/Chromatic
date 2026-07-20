@@ -72,8 +72,7 @@ export const WelcomeModal: React.FC<WelcomeModalProps> = ({
           id: opt.id,
           name: opt.name,
           addedAt: Date.now(),
-          count: optionPhotos.length,
-          isDemo: opt.id === 'demo-source-1'
+          count: optionPhotos.length
         };
 
         sourcesToCreate.push(source);
@@ -95,8 +94,6 @@ export const WelcomeModal: React.FC<WelcomeModalProps> = ({
         return <FileText size={20} />;
       case 'desktop':
         return <Monitor size={20} />;
-      case 'demo':
-        return <Sparkles size={20} />;
       default:
         return <Images size={20} />;
     }

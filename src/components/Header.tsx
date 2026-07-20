@@ -21,7 +21,6 @@ interface HeaderProps {
   onUpdateSettings: (newSettings: Partial<UserSettings>) => void;
   onOpenSettings: () => void;
   onAddFolder: () => void;
-  onLoadDemo: () => void;
   totalImagesCount: number;
   selectedCount?: number;
 }
@@ -33,7 +32,6 @@ export const Header: React.FC<HeaderProps> = ({
   onUpdateSettings,
   onOpenSettings,
   onAddFolder,
-  onLoadDemo,
   totalImagesCount,
   selectedCount = 0
 }) => {
@@ -82,16 +80,6 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* Action Controls & Customization */}
       <div className="header-actions">
-        {/* Quick Demo Button */}
-        <button 
-          className="btn btn-secondary btn-demo"
-          onClick={onLoadDemo}
-          title="Cargar imágenes de muestra al instante"
-        >
-          <Sparkles size={16} className="sparkle-icon" />
-          <span className="btn-label">Demo</span>
-        </button>
-
         {/* Quick Add Folder */}
         <button 
           className="btn btn-primary btn-add-folder"

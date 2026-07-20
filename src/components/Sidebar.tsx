@@ -17,7 +17,6 @@ interface SidebarProps {
   onSelectSource: (sourceId: string | null) => void;
   onOpenAddFolder: () => void;
   onOpenSettings: () => void;
-  onLoadDemo: () => void;
   totalImagesCount: number;
   isCollapsed: boolean;
   onToggleCollapse: () => void;
@@ -29,7 +28,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onSelectSource,
   onOpenAddFolder,
   onOpenSettings,
-  onLoadDemo,
   totalImagesCount,
   isCollapsed,
   onToggleCollapse
@@ -111,20 +109,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
           )}
         </div>
       </nav>
-
-      {/* Bottom Demo Option if empty */}
-      {sources.length === 0 && (
-        <div className="sidebar-footer">
-          <button 
-            className="sidebar-nav-item footer-item demo-item"
-            onClick={onLoadDemo}
-            title="Cargar imágenes de muestra"
-          >
-            <Sparkles size={18} className="nav-icon sparkle" />
-            {!isCollapsed && <span className="nav-label">Cargar Demo</span>}
-          </button>
-        </div>
-      )}
     </aside>
   );
 };

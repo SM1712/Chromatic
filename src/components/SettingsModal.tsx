@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { 
   X, 
   FolderPlus, 
@@ -10,7 +10,10 @@ import {
   Moon, 
   Sparkles, 
   Layout, 
-  HardDrive
+  HardDrive,
+  RefreshCw,
+  DownloadCloud,
+  CheckCircle2
 } from 'lucide-react';
 import { AccentColor, FolderSource, ThemeMode, UserSettings } from '../types';
 import { processFileList } from '../services/fileSystemService';
@@ -38,8 +41,33 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   onUpdateSettings
 }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [updateStatus, setUpdateStatus] = useState<'idle' | 'checking' | 'latest' | 'available'>('idle');
+  const [updateInfo, setUpdateInfo] = useState<string>('');
 
   if (!isOpen) return null;
+
+  const handleCheckUpdate = async () => {
+    setUpdateStatus('checking');
+    try {
+      const res = await fetch('https://raw.githubusercontent.com/SM1712/Chromatic/main/latest.json');
+      if (res.ok) {
+        const data = await res.json();
+        if (data.version && data.version !== '1.0.0') {
+          setUpdateStatus('available');
+          setUpdateInfo(`¡Nueva versión v${data.version} disponible! ${data.notes || ''}`);
+        } else {
+          setUpdateStatus('latest');
+          setUpdateInfo('¡Estás utilizando la versión más reciente v1.0.0!');
+        }
+      } else {
+        setUpdateStatus('latest');
+        setUpdateInfo('¡Estás utilizando la versión más reciente v1.0.0!');
+      }
+    } catch {
+      setUpdateStatus('latest');
+      setUpdateInfo('¡Estás utilizando la versión más reciente v1.0.0!');
+    }
+  };
 
   const handleFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
@@ -195,6 +223,51 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                   {settings.accent === a.id && <Check size={16} color="#ffffff" />}
                 </button>
               ))}
+            </div>
+          </section>
+
+          {/* Section 4: Software Updates */}
+          <section className="settings-section">
+            <div className="section-header">
+              <div className="section-title">
+                <RefreshCw size={18} />
+                <h3>Actualización de Software (v1.0.0)</h3>
+              </div>
+              <button 
+                className="btn btn-secondary btn-sm"
+                onClick={handleCheckUpdate}
+                disabled={updateStatus === 'checking'}
+              >
+                <RefreshCw size={14} className={updateStatus === 'checking' ? 'animate-spin' : ''} />
+                {updateStatus === 'checking' ? 'Buscando...' : 'Buscar Actualizaciones'}
+              </button>
+            </div>
+
+            <div className="update-status-box">
+              {updateStatus === 'idle' && (
+                <p className="update-text">Chromatic v1.0.0 — Las actualizaciones del instalador se verifican en tiempo real con el repositorio de GitHub.</p>
+              )}
+              {updateStatus === 'latest' && (
+                <div className="update-alert success">
+                  <CheckCircle2 size={16} />
+                  <span>{updateInfo}</span>
+                </div>
+              )}
+              {updateStatus === 'available' && (
+                <div className="update-alert info">
+                  <DownloadCloud size={16} />
+                  <span>{updateInfo}</span>
+                  <a 
+                    href="https://github.com/SM1712/Chromatic/releases/latest" 
+                    target="_blank" 
+                    rel="noreferrer"
+                    className="btn btn-primary btn-sm"
+                    style={{ marginLeft: '10px', textDecoration: 'none' }}
+                  >
+                    Descargar Instalador (.exe)
+                  </a>
+                </div>
+              )}
             </div>
           </section>
         </div>

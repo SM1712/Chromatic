@@ -1,0 +1,11 @@
+{
+  "version": "1.0.0",
+  "notes": "Chromatic v1.0.0 - Lanzamiento oficial para Windows con instalación en 1 clic y visualizador moderno por fechas.",
+  "pub_date": "2026-07-20T00:00:00Z",
+  "platforms": {
+    "windows-x86_64": {
+      "signature": "",
+      "url": "https://github.com/SM1712/Chromatic/releases/latest/download/Chromatic_1.0.0_x64-setup.exe"
+    }
+  }
+}

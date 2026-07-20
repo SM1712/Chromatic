@@ -16,7 +16,6 @@ import {
   processFileList, 
   scanDirectoryHandle 
 } from './services/fileSystemService';
-import { DEMO_SOURCE_ID, getDemoPhotos } from './services/demoPhotos';
 import { groupImagesByDate, toValidDate, formatDateTitle } from './utils/dateUtils';
 
 import { Header } from './components/Header';
@@ -70,10 +69,7 @@ export const App: React.FC = () => {
         let allLoadedImages: ImageItem[] = [];
 
         for (const source of savedSources) {
-          if (source.isDemo) {
-            console.log('📸 [Diagnostic App.tsx] Cargando fotos demo...');
-            allLoadedImages = [...allLoadedImages, ...getDemoPhotos()];
-          } else if (['default-pictures', 'default-downloads', 'default-documents', 'default-desktop'].includes(source.id)) {
+          if (['default-pictures', 'default-downloads', 'default-documents', 'default-desktop'].includes(source.id)) {
             console.log(`📂 [Diagnostic App.tsx] Cargando fotos de ruta inicial: ${source.name}`);
             allLoadedImages = [...allLoadedImages, ...getPhotosForSystemOption(source.id)];
           } else if (source.handle) {
@@ -154,30 +150,6 @@ export const App: React.FC = () => {
         alert(`Nota sobre la carpeta: ${err.message || 'No se pudo abrir la carpeta seleccionada.'}`);
       }
     }
-  };
-
-  // Load Demo Photos
-  const handleLoadDemo = () => {
-    const demoPhotos = getDemoPhotos();
-    const demoSource: FolderSource = {
-      id: DEMO_SOURCE_ID,
-      name: 'Fotos de Muestra (Demo)',
-      addedAt: Date.now(),
-      count: demoPhotos.length,
-      isDemo: true
-    };
-
-    setSources(prev => {
-      if (prev.some(s => s.id === DEMO_SOURCE_ID)) return prev;
-      const updated = [...prev, demoSource];
-      saveStoredSources(updated);
-      return updated;
-    });
-
-    setImages(prev => {
-      const withoutDemo = prev.filter(img => img.sourceId !== DEMO_SOURCE_ID);
-      return [...withoutDemo, ...demoPhotos];
-    });
   };
 
   // Import Files via Fallback Input
@@ -362,7 +334,6 @@ export const App: React.FC = () => {
         onUpdateSettings={handleUpdateSettings}
         onOpenSettings={() => setIsSettingsOpen(true)}
         onAddFolder={handleAddFolderSource}
-        onLoadDemo={handleLoadDemo}
         totalImagesCount={images.length}
         selectedCount={selectedImageIds.size}
       />
@@ -375,7 +346,6 @@ export const App: React.FC = () => {
           onSelectSource={setActiveSourceId}
           onOpenAddFolder={handleAddFolderSource}
           onOpenSettings={() => setIsSettingsOpen(true)}
-          onLoadDemo={handleLoadDemo}
           totalImagesCount={images.length}
           isCollapsed={isSidebarCollapsed}
           onToggleCollapse={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
@@ -390,7 +360,6 @@ export const App: React.FC = () => {
           onToggleSelectImage={handleToggleSelectImage}
           onToggleSelectGroup={handleToggleSelectGroup}
           onOpenAddFolder={handleAddFolderSource}
-          onLoadDemo={handleLoadDemo}
           totalCount={images.length}
           filteredCount={filteredImages.length}
           searchQuery={searchQuery}
